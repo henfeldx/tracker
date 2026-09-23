@@ -1,11 +1,16 @@
 import React from 'react';
-import { PackageCheck, Clock, Info } from 'lucide-react';
+import { PackageCheck, Clock, Info, AlertTriangle } from 'lucide-react';
 
 interface CardStatusProps {
   titulo: string;
   descricao: string;
   textoApoio?: string;
   etapaLabel: string;
+  avisoCorreios?: {
+    titulo: string;
+    mensagem: string;
+    recomendacao: string;
+  };
 }
 
 export const CardStatus: React.FC<CardStatusProps> = ({
@@ -13,6 +18,7 @@ export const CardStatus: React.FC<CardStatusProps> = ({
   descricao,
   textoApoio,
   etapaLabel,
+  avisoCorreios,
 }) => {
   return (
     <div 
@@ -49,6 +55,21 @@ export const CardStatus: React.FC<CardStatusProps> = ({
           {descricao}
         </p>
 
+        {avisoCorreios && (
+          <div className="mt-4 p-4 sm:p-5 rounded-xl bg-amber-50/90 border border-amber-200/80 space-y-2.5 text-navy">
+            <div className="flex items-center gap-2 text-amber-900 font-semibold text-sm sm:text-base">
+              <AlertTriangle className="w-5 h-5 text-amber-700 flex-shrink-0" />
+              <span>{avisoCorreios.titulo}</span>
+            </div>
+            <p className="text-sm text-navy/85 leading-relaxed">
+              {avisoCorreios.mensagem}
+            </p>
+            <div className="pt-2 border-t border-amber-200/70 text-xs sm:text-sm text-navy/80 font-medium leading-relaxed">
+              <strong className="text-navy font-semibold">Orientação:</strong> {avisoCorreios.recomendacao}
+            </div>
+          </div>
+        )}
+
         {textoApoio && (
           <div className="mt-4 p-4 rounded-xl bg-gelo/90 border border-gelo-borda flex items-start gap-3 text-sm text-navy/85">
             <Info className="w-5 h-5 text-navy flex-shrink-0 mt-0.5" />
@@ -61,3 +82,4 @@ export const CardStatus: React.FC<CardStatusProps> = ({
     </div>
   );
 };
+

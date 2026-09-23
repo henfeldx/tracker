@@ -163,6 +163,7 @@ export const Rastreio: React.FC = () => {
                     titulo={dadosRastreio.statusTitulo}
                     descricao={dadosRastreio.statusDescricao}
                     textoApoio={dadosRastreio.textoApoio}
+                    avisoCorreios={dadosRastreio.avisoCorreios}
                     etapaLabel={ETAPAS_RASTREIO[dadosRastreio.etapaAtual]?.label || 'Em andamento'}
                   />
                 </div>

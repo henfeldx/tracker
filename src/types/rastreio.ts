@@ -39,6 +39,11 @@ export interface DadosRastreio {
   statusTitulo: string;
   statusDescricao: string;
   textoApoio?: string;
+  avisoCorreios?: {
+    titulo: string;
+    mensagem: string;
+    recomendacao: string;
+  };
   eventos: EventoRastreio[];
 }
 
